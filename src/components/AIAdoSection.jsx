@@ -2,7 +2,8 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { fadeInUpVariant } from '../utils/motionVariants'; // Import the variant
+import { fadeInUpVariant } from '../utils/motionVariants';
+// No need to import AIAdoSection.css here, it's imported in styles.css
 
 /**
  * AIAdoSection component focuses on AI adoption for organizations,
@@ -12,6 +13,7 @@ function AIAdoSection() {
   return (
     <motion.section
       className="ai-adoption-section"
+      id="ai-adoption-section" // --- NEW: Added ID for scroll targeting ---
       initial="hidden"
       whileInView="visible" // Animate when in view
       viewport={{ once: true, amount: 0.3 }} // Trigger once when 30% visible
@@ -32,7 +34,6 @@ function AIAdoSection() {
           </p>
           <motion.button
             className="ai-adoption-button"
-            whileHover={{ x: 5 }}
             whileTap={{ scale: 0.95 }}
           >
             See all client success stories

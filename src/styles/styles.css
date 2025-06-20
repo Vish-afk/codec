@@ -1,0 +1,79 @@
+/* src/styles/styles.css */
+
+/* Import Google Fonts - Manrope (for 'codec' logo) */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+/* Import component-specific styles */
+@import url('./components/Header.css');
+@import url('./components/HeroSection.css');
+@import url('./components/AIAdoSection.css');
+@import url('./components/DataAISolutionsSection.css');
+@import url('./components/ExperienceSection.css');
+@import url('./components/ClientLogos.css');
+@import url('./components/MicrosoftPartnerSection.css');
+@import url('./components/Footer.css');
+@import url('./components/DotGrid.css');
+
+/* Global Resets and Base Styles */
+html, body, #root { /* --- NEW: Apply to html, body, and root div for full height --- */
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Manrope', sans-serif; /* Changed to Manrope for all text */
+  background-color: #f9fafb; /* Light grey background */
+  overflow-x: hidden; /* Prevent horizontal scroll due to animations */
+}
+
+/* Base styles for the main container (if App component exists and uses it) */
+.min-h-screen {
+  /* --- NEW: This element now acts as the main flex container for header + content --- */
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Make it fill the body/root height */
+  /* min-height: 100vh; is now redundant and can cause issues, replaced by height: 100% on html/body/root */
+}
+
+/* Common Utility Classes */
+.max-w-7xl { max-width: 1280px; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.px-4 { padding-left: 1rem; padding-right: 1rem; }
+.py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+.py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mb-8 { margin-bottom: 2rem; }
+.mb-16 { margin-bottom: 4rem; }
+.mt-8 { margin-top: 2rem; }
+.ml-2 { margin-left: 0.5rem; }
+.h-4 { height: 1rem; }
+.w-4 { width: 1rem; }
+.h-6 { height: 1.5rem; }
+.w-6 { width: 1.5rem; }
+.leading-relaxed { line-height: 1.625; }
+.text-center { text-align: center; }
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.flex-wrap { flex-wrap: wrap; }
+.opacity-60 { opacity: 0.6; }
+
+/* Responsive padding for main sections/containers */
+@media (min-width: 640px) { /* sm */
+  .px-sm {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+@media (min-width: 1024px) { /* lg */
+  .px-lg {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Add more global utility classes here if they are truly used across many components
+   and do not represent component-specific styling. */

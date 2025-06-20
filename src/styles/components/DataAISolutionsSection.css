@@ -1,0 +1,102 @@
+/* src/styles/components/DataAISolutionsSection.css */
+
+.data-ai-solutions-section {
+  background-color: white;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+.data-ai-solutions-container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width: 640px) {
+  .data-ai-solutions-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .data-ai-solutions-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+.data-ai-solutions-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.data-ai-solutions-title {
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: #1a202c;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+.data-ai-solutions-description {
+  font-size: 1.15rem;
+  color: #4a5568;
+  max-width: 60rem;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+.service-cards-grid {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 60rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (min-width: 768px) {
+  .service-cards-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.service-card, .service-card-red {
+  padding: 2.5rem;
+  border-radius: 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.service-card {
+  background-color: #f0f4f8;
+  color: #1a202c;
+}
+
+.service-card-red {
+  background-color: #ef4444;
+  color: white;
+}
+
+.service-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 1.25rem;
+}
+.service-card-title-white {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+.service-card-icon {
+  margin-left: auto;
+  margin-right: auto;
+  height: 1.75rem;
+  width: 1.75rem;
+  color: #a0aec0;
+}
+.service-card-icon-white {
+  margin-left: auto;
+  margin-right: auto;
+  height: 1.75rem;
+  width: 1.75rem;
+  color: white;
+}

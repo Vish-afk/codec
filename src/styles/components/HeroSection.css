@@ -1,0 +1,146 @@
+/* src/styles/components/HeroSection.css */
+
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  /* padding-top: 6rem; Padding for internal spacing around the content */
+  padding-bottom: 0rem; /* Padding for internal spacing around the content */
+  background-color: #f9fafb; /* Consistent light background */
+  flex-grow: 1; /* Makes it fill the remaining height of .min-h-screen (its parent) */
+  display: flex; /* Use flex to align content within itself */
+  flex-direction: column; /* Stack container and divider vertically */
+  align-items: center; /* Center content horizontally */
+  justify-content: center; /* Vertically center its direct children: .hero-section-container and .hero-section-divider */
+  margin-top: 0; /* --- NEW: Explicitly remove any top margin that might be pushing it down --- */
+}
+
+.hero-section-container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%; /* Ensure it takes full width within max-width */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center the .hero-section-grid within THIS container. */
+  flex-grow: 1; /* Allow container to grow and fill remaining space within hero-section (after divider) */
+}
+@media (min-width: 640px) {
+  .hero-section-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .hero-section-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.hero-section-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; /* Space between left and right sections */
+  align-items: center; /* Center items in column layout on smaller screens */
+  text-align: center; /* Center text by default on smaller screens */
+  height: 100%; /* Ensure grid itself can stretch vertically */
+  flex-grow: 1; /* Allow grid to grow and take available space within container */
+}
+
+@media (min-width: 1024px) { /* On large screens, arrange in row */
+  .hero-section-grid {
+    flex-direction: row;
+    justify-content: space-between; /* Pushes left content and dot grid to ends */
+    align-items: stretch; /* Make children stretch to fill container height */
+    text-align: left; /* Align text to left on large screens */
+  }
+}
+
+.hero-section-left {
+  flex-basis: 50%; /* Take half width on large screens */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transform: translateY(-10%); /* Visually shift content upwards to compensate for perceived misalignment */
+}
+
+.hero-section-title {
+  font-size: 5rem; /* Significantly increased font size */
+  font-weight: 800; /* Extra bold */
+  line-height: 1.1; /* Tighter line height */
+  /* Color is applied via inline style from React for each part */
+  margin-bottom: 1.5rem;
+}
+@media (min-width: 768px) {
+  .hero-section-title {
+    font-size: 8rem; /* Even larger on medium screens */
+  }
+}
+@media (min-width: 1024px) {
+  .hero-section-title {
+    font-size: 9rem; /* Largest on large screens */
+  }
+}
+
+.hero-section-description {
+  font-size: 1.25rem; /* text-xl equivalent */
+  line-height: 1.75; /* leading-relaxed equivalent */
+  color: #4a5568; /* Gray text */
+  margin-bottom: 2.5rem;
+}
+
+/* Styles for the new arrow-down icon */
+.hero-section-arrow-down-container {
+  display: flex;
+  justify-content: center; /* Center the button on all screens as requested */
+  margin-top: 2rem;
+  width: 100%; /* Ensure container takes full width to allow centering */
+}
+
+.hero-section-arrow-down {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent; /* Ensure no background */
+  color: #ef4444; /* Red color for the arrow icon */
+  cursor: pointer;
+  transition: transform 0.3s ease; /* Only transform for hover */
+  padding: 0.5rem; /* Add a little padding for clickable area */
+  border: none; /* Ensure no border */
+}
+
+.hero-section-arrow-down:hover {
+  transform: translateY(5px); /* Gentle bounce on hover */
+}
+
+.hero-section-arrow-down-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+/* Dot Grid Container */
+.hero-section-right {
+  flex-basis: 50%;
+  display: flex;
+  justify-content: center; /* Keep dot grid centered horizontally within its half */
+  align-items: center; /* Keep dot grid centered vertically within its half */
+  position: relative; /* Crucial for absolute positioning of .dot-grid child */
+  height: 100%; /* Important: Takes full height of hero-section-grid row */
+}
+/* For smaller screens where it's column, give it a fixed height */
+@media (max-width: 1023px) {
+  .hero-section-right {
+    height: 300px; /* Fixed height for dot grid only in column layout */
+    width: 100%; /* Fill width in column layout */
+  }
+}
+
+/* Style for the line break divider */
+.hero-section-divider {
+  width: 100%; /* Full width of the section */
+  height: 1px;
+  background-color: #d1d5db; /* Light gray color */
+  margin-top: 9rem; /* Space above the divider */
+}
