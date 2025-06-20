@@ -4,16 +4,23 @@
   display: grid;
   grid-template-columns: repeat(var(--grid-cols, 15), 1fr);
   grid-template-rows: repeat(var(--grid-rows, 10), 1fr);
-  gap: 0.8rem;
+  gap: 1.8rem; /* Increased gap from 0.8rem to 1.8rem for a larger pattern spread */
   width: 100%; /* Fill parent width */
   height: 100%; /* Fill parent height */
-  position: relative;
+  position: absolute; /* Ensures it fills parent and doesn't affect other components' layout */
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  /* Add centering for dots within their cells */
+  justify-items: center;
+  align-items: center;
 }
 
 .dot {
-  width: 8px; /* Size of each dot */
-  height: 8px;
-  background-color: rgba(200, 200, 200, 0.4); /* Very light gray, semi-transparent */
+  width: 12px; /* Increased size of each dot from 8px to 12px */
+  height: 12px; /* Increased size of each dot from 8px to 12px */
+  background-color: rgba(200, 200, 200, 0.5); /* Very light gray, semi-transparent */
   border-radius: 50%;
   opacity: 0.5;
   will-change: opacity, transform; /* Optimize for animation */
@@ -22,11 +29,11 @@
 /* Animation for individual dots */
 @keyframes dotFadePulse {
   0%, 100% {
-    opacity: 0.3;
+    opacity: 0.5;
     transform: scale(1);
   }
   50% {
-    opacity: 0.7;
+    opacity: 0.8;
     transform: scale(1.1);
   }
 }

@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
-import { fadeInUpVariant } from '../utils/motionVariants'; // Removed fadeInDownVariant if not used
+import { fadeInUpVariant } from '../utils/motionVariants';
 import DotGrid from './DotGrid';
 
 /**
@@ -13,7 +13,7 @@ function HeroSection() {
   // Pre-define parts of the sentence with their colors
   const textParts = [
     { text: "Impact,", color: "#1a202c" }, // Dark color for "Impact,"
-    { text: " delivered.", color: "#ef4444" } // Red color for " delivered."
+    { text: " delivered.", color: "#ef4444" } // Red color for " delivered." (note the leading space)
   ];
 
   // Combine parts to get the full string for typing length calculation
@@ -21,7 +21,7 @@ function HeroSection() {
 
   const [typedCharsCount, setTypedCharsCount] = useState(0);
   const [isTypingComplete, setIsTypingComplete] = useState(false);
-  const typingSpeed = 100; // milliseconds per character
+  const typingSpeed = 10; // milliseconds per character
 
   useEffect(() => {
     let timer;
@@ -35,21 +35,49 @@ function HeroSection() {
     return () => clearTimeout(timer);
   }, [typedCharsCount, fullCombinedText.length, typingSpeed]);
 
-  // Function to render the text with dynamic coloring based on typed characters
+  // Function to render the text with dynamic coloring and stable width
   const renderTextWithColor = () => {
-    let currentTotalLength = 0;
-    return textParts.map((part, index) => {
-      // Calculate how many characters of the current part should be displayed
-      const charsToDisplayInPart = Math.max(0, Math.min(part.text.length, typedCharsCount - currentTotalLength));
-      const textToDisplay = part.text.substring(0, charsToDisplayInPart);
-      currentTotalLength += part.text.length; // Update total length processed
+    let currentOverallCharCount = 0; // Tracks characters processed across all parts
+    const renderedElements = [];
 
-      return (
-        <span key={index} style={{ color: part.color }}>
-          {textToDisplay}
+    textParts.forEach((part, index) => {
+      const fullPartText = part.text;
+      const partLength = fullPartText.length;
+
+      // Determine how many characters of the current part should be visible (typed)
+      const charsToDisplayInPart = Math.max(0, Math.min(partLength, typedCharsCount - currentOverallCharCount));
+      const typedContent = fullPartText.substring(0, charsToDisplayInPart);
+      const hiddenContent = fullPartText.substring(charsToDisplayInPart); // Remaining content to be hidden
+
+      renderedElements.push(
+        <span key={`part-${index}`} style={{ color: part.color, display: 'inline-block' }}>
+          {/* Render the typed content as visible */}
+          <span style={{ visibility: 'visible' }}>{typedContent}</span>
+          {/* Render the untyped content as hidden, but occupying space */}
+          <span style={{ visibility: 'hidden' }}>{hiddenContent}</span>
         </span>
       );
+
+      // Add a line break after the first part ("Impact,")
+      if (index === 0) {
+        renderedElements.push(<br key="br-after-impact" />);
+      }
+
+      currentOverallCharCount += partLength; // Update total length processed for the next part
     });
+
+    return renderedElements;
+  };
+
+  /**
+   * Handles the click event for the arrow down button.
+   * Scrolls the window smoothly to the next section (AIAdoSection).
+   */
+  const handleScrollToNextSection = () => {
+    const nextSection = document.getElementById('ai-adoption-section');
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -65,17 +93,17 @@ function HeroSection() {
           >
             <h1 className="hero-section-title">
               {renderTextWithColor()}
-              {/* Blinking cursor only when typing is not complete */}
-              {!isTypingComplete && (
-                <span className="blinking-cursor">|</span>
-              )}
             </h1>
             <p className="hero-section-description">
-              Our unique partnership approach is designed to deliver transformational results by embedding our team into yours.
-              We challenge, deliver & excel to help you get ahead.
+              In an industry that often falls short of its promises, Codec delivers.
+              Codec's unique project delivery framework helps organisations create dramatic shifts in efficiencies and customer experiences with new technology.
             </p>
             <div className="hero-section-arrow-down-container">
-              <button className="hero-section-arrow-down">
+              <button
+                className="hero-section-arrow-down"
+                onClick={handleScrollToNextSection} // Attach the click handler
+                aria-label="Scroll to next section" // Add accessibility label
+              >
                 <ArrowDown className="hero-section-arrow-down-icon" />
               </button>
             </div>
@@ -92,18 +120,7 @@ function HeroSection() {
           </motion.div>
         </div>
       </div>
-      {/* Blinking cursor CSS (can be added to global styles or HeroSection.css) */}
-      <style jsx>{`
-        .blinking-cursor {
-          font-weight: 300;
-          animation: blink 1s steps(1) infinite;
-        }
-        @keyframes blink {
-          50% {
-            opacity: 0;
-          }
-        }
-      `}</style>
+      <div className="hero-section-divider"></div>
     </section>
   );
 }

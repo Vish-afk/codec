@@ -15,19 +15,26 @@
 @import url('./components/DotGrid.css');
 
 /* Global Resets and Base Styles */
-body {
-  font-family: 'Manrope', sans-serif; /* Changed to Manrope for all text */
+html, body, #root { /* --- NEW: Apply to html, body, and root div for full height --- */
+  height: 100%;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  min-height: 100vh;
+}
+
+body {
+  font-family: 'Manrope', sans-serif; /* Changed to Manrope for all text */
   background-color: #f9fafb; /* Light grey background */
   overflow-x: hidden; /* Prevent horizontal scroll due to animations */
 }
 
 /* Base styles for the main container (if App component exists and uses it) */
 .min-h-screen {
-  min-height: 100vh;
+  /* --- NEW: This element now acts as the main flex container for header + content --- */
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Make it fill the body/root height */
+  /* min-height: 100vh; is now redundant and can cause issues, replaced by height: 100% on html/body/root */
 }
 
 /* Common Utility Classes */

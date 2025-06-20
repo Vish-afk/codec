@@ -13,6 +13,7 @@ function AIAdoSection() {
   return (
     <motion.section
       className="ai-adoption-section"
+      id="ai-adoption-section" // --- NEW: Added ID for scroll targeting ---
       initial="hidden"
       whileInView="visible" // Animate when in view
       viewport={{ once: true, amount: 0.3 }} // Trigger once when 30% visible
@@ -33,7 +34,6 @@ function AIAdoSection() {
           </p>
           <motion.button
             className="ai-adoption-button"
-            // Removed: whileHover={{ x: 5 }}
             whileTap={{ scale: 0.95 }}
           >
             See all client success stories

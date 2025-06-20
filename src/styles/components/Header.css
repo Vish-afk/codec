@@ -11,6 +11,7 @@
   /* Ensure backdrop-filter property is supported */
   -webkit-backdrop-filter: blur(0px); /* For Safari */
   backdrop-filter: blur(0px);
+  flex-shrink: 0; /* --- NEW: Prevent header from shrinking and taking up its defined space --- */
 }
 
 /* Styles for header when scrolled */
