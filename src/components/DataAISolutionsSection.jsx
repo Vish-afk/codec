@@ -1,10 +1,8 @@
 // src/components/DataAISolutionsSection.jsx
 import React from 'react';
-import { ChevronDown } from 'lucide-react'; // Retained ChevronDown icon
+import { ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-// Assuming these variants are defined in '../utils/motionVariants'
-// These variants are for the section's entrance animation, not card hovers.
 const fadeInUpVariant = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
@@ -42,20 +40,18 @@ function DataAISolutionsSection() {
           </motion.p>
         </div>
 
-        {/* Service Cards - Hover animations removed */}
+        {/* Service Cards */}
         <div className="service-cards-grid">
           <motion.div
             className="service-card"
             variants={cardItemVariants}
-            // Removed whileHover, transition, and whileTap props for no hover animation
           >
             <h3 className="service-card-title">Data governance</h3>
             <ChevronDown className="service-card-icon" />
           </motion.div>
           <motion.div
-            className="service-card-red"
+            className="service-card-red service-card-center" /* The middle card retains this class */
             variants={cardItemVariants}
-            // Removed whileHover, transition, and whileTap props for no hover animation
           >
             <h3 className="service-card-title-white">AI & Machine learning</h3>
             <ChevronDown className="service-card-icon-white" />
@@ -63,7 +59,6 @@ function DataAISolutionsSection() {
           <motion.div
             className="service-card"
             variants={cardItemVariants}
-            // Removed whileHover, transition, and whileTap props for no hover animation
           >
             <h3 className="service-card-title">Data estate modernisation</h3>
             <ChevronDown className="service-card-icon" />
