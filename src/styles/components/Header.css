@@ -1,0 +1,148 @@
+/* src/styles/components/Header.css */
+
+.header {
+  background-color: transparent; /* Make background transparent initially */
+  box-shadow: none; /* No shadow initially */
+  border-radius: 0; /* No borders */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease; /* Smooth transition for all properties */
+  /* Ensure backdrop-filter property is supported */
+  -webkit-backdrop-filter: blur(0px); /* For Safari */
+  backdrop-filter: blur(0px);
+}
+
+/* Styles for header when scrolled */
+.header.scrolled {
+  background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent white background */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01); /* Subtle shadow */
+  -webkit-backdrop-filter: blur(8px); /* Blur effect for Safari */
+  backdrop-filter: blur(3px); /* Blur effect */
+}
+
+.header-content {
+  max-width: 100%; /* Allows it to span full width of its parent */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  display: flex;
+  justify-content: space-between; /* Pushes logo and nav to far ends */
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+@media (min-width: 640px) {
+  .header-content {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .header-content {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+.header-logo {
+  font-family: 'Manrope', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1a202c;
+  letter-spacing: -0.025em;
+  text-decoration: none;
+}
+.header-nav {
+  display: none;
+  gap: 1.5rem; /* Gap between nav items */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+@media (min-width: 768px) {
+  .header-nav {
+    display: flex;
+  }
+}
+
+/* Individual Nav Links */
+.header-nav-item {
+  position: relative;
+}
+
+.header-nav-link {
+  color: #000000;
+  text-decoration: none;
+  padding: 0.5rem 0.25rem;
+  position: relative;
+  transition: color 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Space between text and icon */
+  white-space: nowrap;
+}
+.header-nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background-color: #ef4444;
+  transition: width 0.3s ease-in-out;
+}
+.header-nav-link:hover {
+  color: #ef4444;
+}
+.header-nav-link:hover::after {
+  width: 100%;
+}
+
+/* Dropdown specific styles */
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  background-color: white;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  padding: 1rem 0;
+  min-width: 180px;
+  list-style: none;
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  z-index: 10;
+}
+
+.dropdown-menu.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-item a {
+  display: block;
+  padding: 0.75rem 1.5rem;
+  color: #333;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-item a:hover {
+  background-color: #f0f4f8;
+  color: #ef4444;
+}
+
+/* Styles for dropdown arrow */
+.dropdown-arrow {
+  transition: transform 0.3s ease;
+}
+
+.dropdown-item.open .dropdown-arrow {
+  transform: rotate(180deg);
+}

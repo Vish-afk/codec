@@ -1,0 +1,107 @@
+/* src/styles/components/ExperienceSection.css */
+
+.experience-section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-color: #f0f4f8; /* Light gray background */
+}
+
+.experience-section-container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width: 640px) {
+  .experience-section-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .experience-section-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.experience-section-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; /* Space between columns on smaller screens */
+  align-items: center; /* Center items vertically in column layout */
+}
+
+@media (min-width: 1024px) { /* lg */
+  .experience-section-grid {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start; /* Align items to the start when in row */
+  }
+}
+
+.experience-section-title {
+  font-size: 2.5rem; /* Larger font size */
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  color: #1a202c; /* Dark text */
+}
+@media (min-width: 768px) {
+  .experience-section-title {
+    font-size: 3rem;
+  }
+}
+
+.experience-section-text {
+  max-width: 600px; /* Limit width of description text */
+}
+
+.experience-section-description {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: #4a5568;
+}
+
+.experience-section-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: #000000;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+  position: relative; /* Needed for ::after positioning */
+  overflow: hidden; /* Ensures underline doesn't go beyond bounds during transition */
+  padding-bottom: 0.85rem; /* Add some padding to make space for the underline */
+}
+
+/* Underline effect for the button */
+.experience-section-button::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0; /* Position at the bottom of the button */
+  width: 0%;
+  height: 2px;
+  background-color: #ef4444; /* Red accent color */
+  transition: width 0.3s ease-in-out;
+}
+
+.experience-section-button:hover {
+  color: #ef4444; /* Change text color on hover */
+}
+
+.experience-section-button:hover::after {
+  width: 100%; /* Expand underline on hover */
+}
+
+.experience-section-button-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}

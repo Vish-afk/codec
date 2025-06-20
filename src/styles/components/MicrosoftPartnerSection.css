@@ -1,0 +1,88 @@
+/* src/styles/components/MicrosoftPartnerSection.css */
+
+.ms-partner-section {
+  background-color: #f9fafb;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+.ms-partner-container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width: 640px) {
+  .ms-partner-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .ms-partner-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+.ms-partner-grid {
+  display: grid;
+  gap: 4rem;
+  align-items: center;
+}
+@media (min-width: 1024px) {
+  .ms-partner-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.ms-partner-left {
+  text-align: center;
+}
+@media (min-width: 1024px) {
+  .ms-partner-left {
+    text-align: left;
+  }
+}
+.ms-partner-heading-background {
+  font-size: 4.5rem;
+  font-weight: 300;
+  color: #e2e8f0;
+  margin-bottom: 2rem;
+  line-height: 1;
+}
+.ms-partner-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a202c;
+  line-height: 1.2;
+}
+.ms-partner-tag-container {
+  margin-top: 2.5rem;
+  display: flex;
+  justify-content: center;
+}
+@media (min-width: 1024px) {
+  .ms-partner-tag-container {
+    justify-content: flex-start;
+  }
+}
+.ms-partner-tag {
+  background-color: #2d3748;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+}
+.ms-partner-right-title {
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: #1a202c;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+.ms-partner-right-description {
+  color: #4a5568;
+  line-height: 1.7;
+  font-size: 1.05rem;
+}

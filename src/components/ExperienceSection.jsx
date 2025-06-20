@@ -2,7 +2,8 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { fadeInUpVariant } from '../utils/motionVariants'; // Import the variant
+import { fadeInUpVariant } from '../utils/motionVariants';
+// No need to import ExperienceSection.css here, it's imported in styles.css
 
 /**
  * ExperienceSection component showcases the company's long-standing experience
@@ -31,7 +32,7 @@ function ExperienceSection() {
             </h2>
             <motion.button
               className="experience-section-button"
-              whileHover={{ x: 5 }}
+              // Removed: whileHover={{ x: 5 }}
               whileTap={{ scale: 0.95 }}
             >
               See all client success stories

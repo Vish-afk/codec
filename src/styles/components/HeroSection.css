@@ -1,0 +1,130 @@
+/* src/styles/components/HeroSection.css */
+
+.hero-section {
+  position: relative;
+  overflow: hidden; /* Ensure content outside is clipped */
+  padding-top: 6rem; /* Adjust padding as needed */
+  padding-bottom: 6rem;
+  background-color: #f9fafb; /* Consistent light background */
+  min-height: 80vh; /* Ensure it takes up a good portion of the viewport */
+  display: flex; /* Use flex to align content */
+  align-items: center; /* Center content vertically */
+}
+
+.hero-section-container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%; /* Ensure it takes full width within max-width */
+}
+@media (min-width: 640px) {
+  .hero-section-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .hero-section-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.hero-section-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; /* Space between left and right sections */
+  align-items: center; /* Center items in column layout on smaller screens */
+  text-align: center; /* Center text by default on smaller screens */
+  height: 100%; /* Ensure grid itself can stretch vertically */
+}
+
+@media (min-width: 1024px) { /* On large screens, arrange in row */
+  .hero-section-grid {
+    flex-direction: row;
+    justify-content: space-between; /* Pushes left content and dot grid to ends */
+    align-items: stretch; /* Make children stretch to fill container height */
+    text-align: left; /* Align text to left on large screens */
+  }
+}
+
+.hero-section-left {
+  flex-basis: 50%; /* Take half width on large screens */
+  /* Removed max-width to allow the content more space */
+  /* To move slightly left, we rely on justify-content: space-between on parent */
+}
+
+.hero-section-title {
+  font-size: 3rem; /* text-5xl equivalent */
+  font-weight: 800; /* Extra bold */
+  line-height: 1.1; /* Tighter line height */
+  color: #1a202c; /* Dark text */
+  margin-bottom: 1.5rem;
+  white-space: nowrap; /* Prevent text wrapping during typewriter effect */
+  overflow: hidden; /* Hide overflow during typing */
+}
+@media (min-width: 768px) {
+  .hero-section-title {
+    font-size: 4.5rem; /* text-6xl equivalent */
+  }
+}
+
+.hero-section-description {
+  font-size: 1.25rem; /* text-xl equivalent */
+  line-height: 1.75; /* leading-relaxed equivalent */
+  color: #4a5568; /* Gray text */
+  margin-bottom: 2.5rem;
+}
+
+/* Styles for the new arrow-down icon */
+.hero-section-arrow-down-container {
+  display: flex;
+  justify-content: center; /* Center on small screens */
+  margin-top: 2rem;
+}
+@media (min-width: 1024px) {
+  .hero-section-arrow-down-container {
+    justify-content: flex-start; /* Align to left on large screens */
+  }
+}
+
+.hero-section-arrow-down {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent; /* Ensure no background */
+  color: #ef4444; /* Red color for the arrow icon */
+  cursor: pointer;
+  transition: transform 0.3s ease; /* Only transform for hover */
+  padding: 0.5rem; /* Add a little padding for clickable area */
+  border: none; /* Ensure no border */
+}
+
+.hero-section-arrow-down:hover {
+  transform: translateY(5px); /* Gentle bounce on hover */
+}
+
+.hero-section-arrow-down-icon {
+  width: 2.5rem; /* Size of the icon */
+  height: 2.5rem;
+}
+
+/* Dot Grid Container */
+.hero-section-right {
+  flex-basis: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100%; /* Important: Takes full height of hero-section-grid row */
+  min-height: 300px; /* Ensure a minimum height for the dot grid container */
+}
+/* For smaller screens where it's column, give it a fixed height or max-height */
+@media (max-width: 1023px) {
+  .hero-section-right {
+    height: 300px; /* Fixed height for dot grid in column layout */
+    width: 100%; /* Fill width in column layout */
+  }
+}

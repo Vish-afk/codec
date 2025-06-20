@@ -1,0 +1,94 @@
+/* src/styles/components/AIAdoSection.css */
+
+.ai-adoption-section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-color: #fff;
+  text-align: center;
+}
+
+.ai-adoption-container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width: 640px) {
+  .ai-adoption-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .ai-adoption-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.ai-adoption-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px; /* Constrain content width */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ai-adoption-title {
+  font-size: 2.25rem; /* Equivalent to text-4xl */
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  color: #1a202c; /* Dark text */
+}
+
+.ai-adoption-description {
+  font-size: 1.125rem; /* Equivalent to text-lg */
+  line-height: 1.75; /* Equivalent to leading-relaxed */
+  color: #4a5568; /* Gray text */
+  margin-bottom: 2rem;
+}
+
+.ai-adoption-button {
+  display: inline-flex; /* Use inline-flex for alignment with icon */
+  align-items: center;
+  gap: 0.5rem; /* Space between text and icon */
+  background-color: transparent;
+  color: #000000; /* Dark black text */
+  padding: 0.75rem 1rem; /* Adjust padding as needed */
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out; /* Transition for text color */
+  position: relative; /* Needed for ::after positioning */
+  overflow: hidden; /* Ensures underline doesn't go beyond bounds during transition */
+  padding-bottom: 0.85rem; /* Add some padding to make space for the underline */
+}
+
+/* Underline effect for the button */
+.ai-adoption-button::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0; /* Position at the bottom of the button */
+  width: 0%;
+  height: 2px;
+  background-color: #ef4444; /* Red accent color */
+  transition: width 0.3s ease-in-out;
+}
+
+.ai-adoption-button:hover {
+  color: #ef4444; /* Change text color on hover */
+}
+
+.ai-adoption-button:hover::after {
+  width: 100%; /* Expand underline on hover */
+}
+
+.ai-adoption-button-icon {
+  width: 1.25rem; /* Equivalent to w-5 */
+  height: 1.25rem; /* Equivalent to h-5 */
+}
