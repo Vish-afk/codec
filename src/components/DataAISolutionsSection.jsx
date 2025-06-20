@@ -1,8 +1,19 @@
 // src/components/DataAISolutionsSection.jsx
 import React from 'react';
-import { ChevronRight } from 'lucide-react';
+import { ChevronDown } from 'lucide-react'; // Retained ChevronDown icon
 import { motion } from 'framer-motion';
-import { fadeInUpVariant, cardItemVariants } from '../utils/motionVariants'; // Import variants
+
+// Assuming these variants are defined in '../utils/motionVariants'
+// These variants are for the section's entrance animation, not card hovers.
+const fadeInUpVariant = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+};
+
+const cardItemVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+};
 
 /**
  * DataAISolutionsSection component highlights data and AI solutions,
@@ -13,52 +24,49 @@ function DataAISolutionsSection() {
     <motion.section
       className="data-ai-solutions-section"
       initial="hidden"
-      whileInView="visible" // Animate when in view
-      viewport={{ once: true, amount: 0.3 }} // Trigger once when 30% visible
-      transition={{ staggerChildren: 0.1, delayChildren: 0.2 }} // Stagger children animations
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ staggerChildren: 0.1, delayChildren: 0.2 }}
     >
       <div className="data-ai-solutions-container">
         <div className="data-ai-solutions-header">
-          <h2 className="data-ai-solutions-title">
+          <motion.h2 className="data-ai-solutions-title" variants={fadeInUpVariant}>
             Data & AI solutions that deliver
             <br />
             impact
-          </h2>
-          <p className="data-ai-solutions-description">
+          </motion.h2>
+          <motion.p className="data-ai-solutions-description" variants={fadeInUpVariant}>
             Organisations across every industry are adopting new capabilities to enhance value creation through data-driven insights.
             We implement solutions and amplify support for upskilled users to get control their data along with informed the use of
             artificial intelligence, machine learning and automation.
-          </p>
+          </motion.p>
         </div>
 
-        {/* Service Cards */}
+        {/* Service Cards - Hover animations removed */}
         <div className="service-cards-grid">
           <motion.div
             className="service-card"
             variants={cardItemVariants}
-            whileHover={{ scale: 1.03, boxShadow: "0 8px 25px rgba(0, 0, 0, 0.1)" }}
-            whileTap={{ scale: 0.98 }}
+            // Removed whileHover, transition, and whileTap props for no hover animation
           >
             <h3 className="service-card-title">Data governance</h3>
-            <ChevronRight className="service-card-icon" />
+            <ChevronDown className="service-card-icon" />
           </motion.div>
           <motion.div
             className="service-card-red"
             variants={cardItemVariants}
-            whileHover={{ scale: 1.03, boxShadow: "0 8px 25px rgba(239, 68, 68, 0.3)" }}
-            whileTap={{ scale: 0.98 }}
+            // Removed whileHover, transition, and whileTap props for no hover animation
           >
             <h3 className="service-card-title-white">AI & Machine learning</h3>
-            <ChevronRight className="service-card-icon-white" />
+            <ChevronDown className="service-card-icon-white" />
           </motion.div>
           <motion.div
             className="service-card"
             variants={cardItemVariants}
-            whileHover={{ scale: 1.03, boxShadow: "0 8px 25px rgba(0, 0, 0, 0.1)" }}
-            whileTap={{ scale: 0.98 }}
+            // Removed whileHover, transition, and whileTap props for no hover animation
           >
             <h3 className="service-card-title">Data estate modernisation</h3>
-            <ChevronRight className="service-card-icon" />
+            <ChevronDown className="service-card-icon" />
           </motion.div>
         </div>
       </div>
