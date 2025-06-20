@@ -52,7 +52,7 @@
 
 .service-cards-grid {
     display: grid;
-    gap: 1.5rem;
+    gap: 0; /* No horizontal gap between cards */
     max-width: 60rem;
     margin-left: auto;
     margin-right: auto;
@@ -60,7 +60,9 @@
 
 @media (min-width: 768px) {
     .service-cards-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        /* THIS LINE ENSURES ALL THREE COLUMNS (AND THUS CARDS) HAVE EQUAL WIDTH */
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center; /* Center align items to make middle card appear taller on both sides */
     }
 }
 
@@ -68,86 +70,90 @@
 .service-card,
 .service-card-red {
     padding: 2.5rem;
-    border-radius: 12px;
+    border-radius: 0; /* Sharp corners */
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    /* NEW: Increased min-height for a more rectangular shape */
-    min-height: 300px; /* From 200px to 300px */
+    min-height: 250px; /* Base min-height for all cards */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     cursor: pointer;
-    /* NEW: Add transitions for smooth hover effects */
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    border: none; /* No border for attached look */
+    position: relative; /* Needed for z-index to work */
+    z-index: 0; /* Default z-index for side cards */
+}
+
+/* Specific styling for the taller middle card */
+.service-card-center {
+    min-height: 350px; /* Adjusted taller height for the middle card */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45); /* Stronger, more spread out shadow */
+    position: relative;
+    z-index: 1; /* Higher z-index to make it stack on top */
 }
 
 .service-card {
     background-color: white;
     color: #1a202c;
-    border: 1px solid #e2e8f0;
 }
 
 .service-card-red {
     background-color: #ef4444;
     color: white;
-    border: 1px solid #ef4444;
 }
 
-/* NEW: Light hover effects for white cards */
+/* Light hover effects for white cards */
 .service-card:hover {
-    background-color: #fcfcfc; /* Very slightly off-white */
-    border-color: #d3d3d3; /* Slightly darker border */
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35); /* Very subtle shadow increase */
+    background-color: #fcfcfc;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
 
-/* NEW: Light hover effects for red card */
+/* Light hover effects for red card */
 .service-card-red:hover {
-    background-color: #e53935; /* Slightly darker red */
-    border-color: #d32f2f; /* Matching darker red border */
-    box-shadow: 0 6px 18px rgba(239, 68, 68, 0.4); /* Subtle red shadow increase */
+    background-color: #e53935;
+    box-shadow: 0 6px 18px rgba(239, 68, 68, 0.4);
 }
 
-
-/* Card Titles - NEW: Increased font size */
+/* Card Titles - Keeping increased font size */
 .service-card-title {
-    font-size: 1.75rem; /* Increased from 1.45rem */
+    font-size: 1.75rem;
     font-weight: 700;
     color: #1a202c;
     margin-bottom: auto;
-    transition: color 0.3s ease; /* Transition for text color change */
+    transition: color 0.3s ease;
 }
 
 .service-card-title-white {
-    font-size: 1.75rem; /* Increased from 1.45rem */
+    font-size: 1.75rem;
     font-weight: 700;
     color: white;
     margin-bottom: auto;
-    transition: color 0.3s ease; /* Transition for text color change */
+    transition: color 0.3s ease;
 }
 
-/* Icons - NEW: Increased size */
+/* Icons - Keeping increased size */
 .service-card-icon {
     margin-top: auto;
-    height: 2.5rem; /* Increased from 2rem */
-    width: 2.5rem;  /* Increased from 2rem */
+    height: 2.5rem;
+    width: 2.5rem;
     color: #ef4444;
-    transition: color 0.3s ease; /* Transition for icon color change */
+    transition: color 0.3s ease;
 }
 
 .service-card-icon-white {
     margin-top: auto;
-    height: 2.5rem; /* Increased from 2rem */
-    width: 2.5rem;  /* Increased from 2rem */
+    height: 2.5rem;
+    width: 2.5rem;
     color: white;
-    transition: color 0.3s ease; /* Transition for icon color change */
+    transition: color 0.3s ease;
 }
 
-/* NEW: Hover effects for icon colors (when parent card is hovered) */
+/* Hover effects for icon colors (when parent card is hovered) */
 .service-card:hover .service-card-icon {
-    color: #d32f2f; /* Slightly darker red icon on hover */
+    color: #d32f2f;
 }
 
 .service-card-red:hover .service-card-icon-white {
-    color: #f5f5f5; /* Slightly brighter white icon on hover */
+    color: #f5f5f5;
 }
